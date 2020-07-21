@@ -67,14 +67,16 @@ def counting_sort(arr, maximum=None):
 
     counts = {}
     for n in arr:
-        if n not in counts:
-            counts[n] = 0
-        counts[n] += 1
+        if n < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        else:
+            if n not in counts:
+                counts[n] = 0
+            counts[n] += 1
     arr = []
-    count_items = counts.items()
-    for key, value in count_items:
-        for i in range(0, value):
-            arr.append(key)
+    for n, count in sorted(counts.items()):
+        for i in range(count):
+            arr.append(n)
     
 
     return arr
